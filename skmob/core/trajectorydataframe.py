@@ -536,6 +536,11 @@ class TrajDataFrame(pd.DataFrame):
         md = ["crs", "parameters"]  # Add here all the metadata that are accessible from the object
         return md
 
+    @property
+    def _base_class_view(self):
+        """forces DataFrame view in debugging mode for some IDEs"""
+        return pd.DataFrame(self)
+
     def __finalize__(self, other, method=None, **kwargs):
 
         """propagate metadata from other to self"""
